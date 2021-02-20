@@ -7,11 +7,24 @@ const {
   deleteCourse,
   //   getCoursesInRadius,
 } = require('../controllers/courses');
+
+const Course = require('../models/Course');
+
+const advancedResults = require('../middleware/advancedResults');
 const router = express.Router({ mergeParams: true });
 
 // router.route('/radius/:zipcode/:distance').get(getCoursesInRadius);
 
-router.route('/').get(getCourses).post(createCourse);
+router
+  .route('/')
+  .get(
+    advancedResults(Course, {
+      path: 'bootcamp',
+      select: 'name description',
+    }),
+    getCourses
+  )
+  .post(createCourse);
 
 router.route('/:id').get(getCourse).delete(deleteCourse).put(updateCourse);
 
