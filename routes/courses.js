@@ -13,6 +13,8 @@ const Course = require('../models/Course');
 const advancedResults = require('../middleware/advancedResults');
 const router = express.Router({ mergeParams: true });
 
+const { protect } = require('../middleware/auth');
+
 // router.route('/radius/:zipcode/:distance').get(getCoursesInRadius);
 
 router
@@ -24,8 +26,12 @@ router
     }),
     getCourses
   )
-  .post(createCourse);
+  .post(protect, createCourse);
 
-router.route('/:id').get(getCourse).delete(deleteCourse).put(updateCourse);
+router
+  .route('/:id')
+  .get(getCourse)
+  .delete(protect, deleteCourse)
+  .put(protect, updateCourse);
 
 module.exports = router;
