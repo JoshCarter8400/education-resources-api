@@ -3,7 +3,7 @@ const {
   getReviews,
   getReview,
   //   updateCourse,
-  //   createCourse,
+  createReview,
   //   deleteCourse,
   //   getCoursesInRadius,
 } = require('../controllers/reviews');
@@ -18,14 +18,16 @@ const { protect, authorize } = require('../middleware/auth');
 
 // router.route('/radius/:zipcode/:distance').get(getCoursesInRadius);
 
-router.route('/').get(
-  advancedResults(Review, {
-    path: 'bootcamp',
-    select: 'name description',
-  }),
-  getReviews
-);
-//   .post(protect, authorize('publisher', 'admin'), createCourse);
+router
+  .route('/')
+  .get(
+    advancedResults(Review, {
+      path: 'bootcamp',
+      select: 'name description',
+    }),
+    getReviews
+  )
+  .post(protect, authorize('user', 'admin'), createReview);
 
 router.route('/:id').get(getReview);
 //   .delete(protect, authorize('publisher', 'admin'), deleteCourse)
