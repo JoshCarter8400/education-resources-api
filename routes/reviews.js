@@ -2,9 +2,9 @@ const express = require('express');
 const {
   getReviews,
   getReview,
-  //   updateCourse,
+  updateReview,
   createReview,
-  //   deleteCourse,
+  deleteReview,
   //   getCoursesInRadius,
 } = require('../controllers/reviews');
 
@@ -29,8 +29,10 @@ router
   )
   .post(protect, authorize('user', 'admin'), createReview);
 
-router.route('/:id').get(getReview);
-//   .delete(protect, authorize('publisher', 'admin'), deleteCourse)
-//   .put(protect, authorize('publisher', 'admin'), updateCourse);
+router
+  .route('/:id')
+  .get(getReview)
+  .put(protect, authorize('user', 'admin'), updateReview)
+  .delete(protect, authorize('user', 'admin'), deleteReview);
 
 module.exports = router;
