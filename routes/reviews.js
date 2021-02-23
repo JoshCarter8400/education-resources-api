@@ -1,7 +1,7 @@
 const express = require('express');
 const {
   getReviews,
-  //   getCourse,
+  getReview,
   //   updateCourse,
   //   createCourse,
   //   deleteCourse,
@@ -27,9 +27,7 @@ router.route('/').get(
 );
 //   .post(protect, authorize('publisher', 'admin'), createCourse);
 
-// router
-//   .route('/:id')
-//   .get(getCourse)
+router.route('/:id').get(getReview);
 //   .delete(protect, authorize('publisher', 'admin'), deleteCourse)
 //   .put(protect, authorize('publisher', 'admin'), updateCourse);
 
