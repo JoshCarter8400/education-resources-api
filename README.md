@@ -5,7 +5,6 @@
 Backend API for building an Education system
 
 ## Usage
-API can be viewed [here] (C:\Users\joshc\Desktop\CODE\Udemy\education-system-api\public\index.html)
 
 There is a sampleenv.txt file that gives you a template for how to fill out your .env file
 
