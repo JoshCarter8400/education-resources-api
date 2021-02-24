@@ -6,7 +6,7 @@ Backend API for building an Education system
 
 ## Usage
 
-There is a sampleenv.txt file that gives you a template for ho wto fill out your .env file
+There is a sampleenv.txt file that gives you a template for how to fill out your .env file
 
 ```
 npm i
