@@ -14,7 +14,7 @@ var cors = require('cors');
 const connectDB = require('./config/db');
 const errorHandler = require('./middleware/error');
 // Load env files
-dotenv.config({ path: './config.config.env' });
+dotenv.config({ path: '.env' });
 
 // Connect to Database
 connectDB();
